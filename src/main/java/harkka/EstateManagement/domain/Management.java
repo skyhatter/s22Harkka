@@ -77,8 +77,8 @@ public class Management {
 
 	@Override
 	public String toString() {
-		return "Management [management_id=" + management_id + ", managementName=" 
-				+ managementName + ", email=" + email + "]";
+		return "Management [management_id=" + management_id + ", managementName=" + managementName + ", email=" + email
+				 + "]";
 	}
 	
 	

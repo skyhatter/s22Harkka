@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Add new user</title>
+    <title>Lisää käyttäjä</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
@@ -9,15 +9,25 @@
   
 		<form th:object="${newuser}" th:action="@{/saveuser}" action="#" method="post">
 			<div>
-				<label>Username: <input type="text" th:field="*{username}" /></label>
+				<label>Etunimi: <input type="text" th:field="*{firstName}" /></label>
+				<p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Username Error</p>	
+			</div>
+			
+			<div>
+				<label>Sukunimi: <input type="text" th:field="*{lastName}" /></label>
+				<p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Username Error</p>	
+			</div>
+			
+			<div>
+				<label>Käyttäjä: <input type="text" th:field="*{username}" /></label>
 				<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</p>	
 			</div>
 			<div>
-				<label> Password: <input type="password" th:field="*{password}" /></label>
+				<label>Salasana: <input type="password" th:field="*{password}" /></label>
 				<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>	
 			</div>
 			<div>
-				<label> Re-type Password: <input type="password" th:field="*{passwordCheck}" /></label>
+				<label> Salasana uudelleen: <input type="password" th:field="*{passwordCheck}" /></label>
 				<p th:if="${#fields.hasErrors('passwordCheck')}" th:errors="*{passwordCheck}">Password Match Error</p>	
 			</div>
 			

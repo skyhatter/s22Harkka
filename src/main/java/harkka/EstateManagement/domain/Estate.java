@@ -19,21 +19,23 @@ public class Estate {
 	private Long estate_id;
 	
 	@NotNull
-	@Size(min = 1, max = 50)
+	@Size(min = 3, max = 50)
 	private String building, address;
 	
 	@NotNull
-	@Min(value = 1700, message = "Minimi vuosi on 1700")
-	@Max(value = 2023, message = "Maksimi rakennus vuosi on 2023")
+	@Min(value = 1700)
+	@Max(value = 2023)
 	private int buildyear;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "management_id")
 	private Management management;
 	
-	public Estate() {	
+	public Estate() {
+		super();
 	}
 
+	
 	public Estate(String building, String address, int buildyear) {
 		super();
 		this.building = building;
@@ -47,6 +49,12 @@ public class Estate {
 		this.address = address;
 		this.buildyear = buildyear;
 		this.management = management;
+	}
+	
+	public Estate(String building, String address) {
+		super();
+		this.building = building;
+		this.address = address;
 	}
 
 	public Long getEstate_id() {
@@ -94,7 +102,5 @@ public class Estate {
 		return "Estate [estate_id=" + estate_id + ", building=" + building + ", address=" + address + ", buildyear=" + buildyear
 				+ ", management=" + management + "]";
 	}
-	
-	
 	
 }

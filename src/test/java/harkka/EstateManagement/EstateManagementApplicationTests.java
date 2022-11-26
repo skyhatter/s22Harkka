@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import harkka.EstateManagement.web.EstateController;
 import harkka.EstateManagement.web.ManagementController;
+import harkka.EstateManagement.web.AppUserController;
 
 @SpringBootTest
 class EstateManagementApplicationTests {
@@ -15,11 +16,14 @@ class EstateManagementApplicationTests {
 	EstateController estateController;
 	@Autowired
 	ManagementController managementController;
+	@Autowired
+	AppUserController appUserController;
 
 	@Test
 	void contextLoads() throws Exception {
 		assertThat(estateController).isNotNull();
 		assertThat(managementController).isNotNull();
+		assertThat(appUserController).isNotNull();
 	}
 
 }

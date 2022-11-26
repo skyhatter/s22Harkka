@@ -1,5 +1,7 @@
 package harkka.EstateManagement.web;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -36,7 +38,7 @@ public class EstateController {
     }
 
     @RequestMapping(value = "/saveEstate", method = RequestMethod.POST)
-    public String save(Estate estate){
+    public String save(@Valid Estate estate){
         eRepository.save(estate);
         return "redirect:estatelist";
     } 
@@ -50,7 +52,7 @@ public class EstateController {
     
     @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/editEstate/{id}")
-    public String editEstate(@PathVariable("id") Long estate_id, Model model){
+    public String editEstate(@Valid @PathVariable("id") Long estate_id, Model model){
     	model.addAttribute("editEstate", eRepository.findById(estate_id));
     	model.addAttribute("managements", mRepository.findAll());
         return "editestate";

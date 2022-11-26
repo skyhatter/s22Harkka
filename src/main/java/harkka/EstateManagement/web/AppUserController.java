@@ -35,8 +35,8 @@ public class AppUserController {
 	@PostMapping("/saveuser")
 	public String saveUser(@Valid @ModelAttribute("newuser") AppUserRegistration newUser, BindingResult bindingResult) {
 		log.info("saveuser: newAppUser is " + newUser.toString());
-		if (!bindingResult.hasErrors()) { // validation errors
-			if (newUser.getPassword().equals(newUser.getPasswordCheck())) { // check password match
+		if (!bindingResult.hasErrors()) {
+			if (newUser.getPassword().equals(newUser.getPasswordCheck())) {
 				String pwd = newUser.getPassword();
 				BCryptPasswordEncoder bc = new BCryptPasswordEncoder();
 				String hashPwd = bc.encode(pwd);
@@ -45,7 +45,7 @@ public class AppUserController {
 				newAppUser.setPasswordHash(hashPwd);
 				newAppUser.setUsername(newUser.getUsername());
 				newAppUser.setRole("USER");
-				if (auRepository.findByUsername(newUser.getUsername()) == null) { // Check if user exists
+				if (auRepository.findByUsername(newUser.getUsername()) == null) {
 					auRepository.save(newAppUser);
 				} else {
 					log.info("username already exists");

@@ -17,6 +17,7 @@
 			</tr>
 			<tr>
 				<td>Osoite: <input type="text" th:field="*{address}" /></td>
+				<td th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Error</td>
 			</tr>
 			<tr>
 				<td>Rakennus vuosi: <input type="text" th:field="*{buildyear}" /></td>
